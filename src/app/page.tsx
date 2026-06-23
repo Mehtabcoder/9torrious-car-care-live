@@ -36,13 +36,6 @@ export default function Home() {
   };
 
   return (
-
-
-    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans flex flex-col">
-      
-      {/* (Your Header/Navbar goes here) */}
-
-      <main className="flex-grow flex flex-col items-center justify-center px-4 py-12 text-center max-w-xl mx-auto w-full">
     <div className="min-h-screen bg-gray-50 text-gray-900 font-sans flex flex-col">
       
       {/* ======================================================= */}
@@ -50,7 +43,7 @@ export default function Home() {
       {/* ======================================================= */}
       <header className="w-full flex flex-col">
         
-        {/* 1. TOP INFORMATION BAR (Matches dark top bar in image_d750c5.png) */}
+        {/* 1. TOP INFORMATION BAR */}
         <div className="bg-[#1a202c] text-white text-xs px-4 py-2.5 flex flex-row justify-between items-center border-b border-gray-800">
           <div className="flex items-center gap-1.5 font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 text-sky-400">
@@ -66,14 +59,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 2. MAIN LOGO & NAVIGATION AREA (Matches bright sky-blue background) */}
+        {/* 2. MAIN LOGO & NAVIGATION AREA */}
         <div className="bg-[#38bdf8] text-white px-4 sm:px-6 py-4 flex justify-between items-center shadow-md relative">
           {/* Logo Text */}
           <Link href="/" className="text-2xl font-black tracking-tight drop-shadow-sm">
             9 Torrious Car Care
           </Link>
 
-          {/* Desktop Links (Hidden on Mobile, Visible on Desktop) */}
+          {/* Desktop Links */}
           <nav className="hidden md:flex items-center gap-6 font-semibold text-sm">
             <Link href="/" className="hover:text-black transition-colors">Home</Link>
             <Link href="/about" className="hover:text-black transition-colors">About Us</Link>
@@ -82,7 +75,7 @@ export default function Home() {
             <Link href="/contact" className="hover:text-black transition-colors">Contact Us</Link>
           </nav>
 
-          {/* Mobile Hamburger Button (Visible ONLY on Mobile) */}
+          {/* Mobile Hamburger Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)} 
             className="md:hidden p-1 rounded focus:outline-none hover:bg-sky-500 transition-colors"
@@ -109,7 +102,7 @@ export default function Home() {
           )}
         </div>
 
-        {/* 3. FULL-WIDTH CALL TO ACTION BUTTON (Matches orange banner button) */}
+        {/* 3. FULL-WIDTH CALL TO ACTION BUTTON */}
         <div className="bg-[#38bdf8] px-4 pb-4 md:px-6">
           <Link 
             href="/contact" 
@@ -118,7 +111,7 @@ export default function Home() {
             <span>Get a Free Quote</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
               <path fillRule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.521 1.582.233 2.722 1.634 2.722 3.23v11.22c0 1.596-1.14 2.997-2.722 3.23a49.083 49.083 0 0 1-4.444.425.75.75 0 0 1-.532-.22l-3.113-3.112a1.022 1.022 0 0 0-.322-.222l-3.084-1.141a.75.75 0 0 1-.427-.929V15.75H4.848c-1.583-.233-2.722-1.634-2.722-3.23V6c0-1.596 1.14-2.997 2.722-3.23Zm11.27 6.01a.75.75 0 0 1 1.06-.02l2.25 2.25a.75.75 0 0 1 0 1.06l-2.25 2.25a.75.75 0 1 1-1.06-1.06l.97-.97h-2.463a3.75 3.75 0 0 0-3.75 3.75.75.75 0 0 1-1.5 0 5.25 5.25 0 0 1 5.25-5.25h2.463l-.97-.97a.75.75 0 0 1 .02-1.06Z" clipRule="evenodd" />
-          </svg>
+            </svg>
           </Link>
         </div>
       </header>
@@ -126,18 +119,18 @@ export default function Home() {
       {/* ======================================================= */}
       {/*                        HERO SECTION                     */}
       {/* ======================================================= */}
-      <main className="flex-grow flex flex-col items-center justify-center px-4 py-12 text-center max-w-xl mx-auto">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 py-12 text-center max-w-xl mx-auto w-full">
         
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mb-3 leading-tight">
-          9 Torious Car Care
+          9 Torrious Car Care
         </h2>
         
-        <p className="text-gray-600 text-sm sm:text-base font-medium mb-6">
-         ⭐⭐⭐⭐⭐
+        <p className="text-gray-600 text-sm sm:text-base font-medium mb-2">
+          ⭐⭐⭐⭐⭐
         </p>
         <p className="text-gray-600 text-sm sm:text-base font-medium mb-6">
-         5-star rated local home <br />
-        maintenance team you can trust!
+          5-star rated local home <br />
+          maintenance team you can trust!
         </p>
 
         <Link 
@@ -148,7 +141,7 @@ export default function Home() {
         </Link>
 
         {/* ======================================================= */}
-        {/*                    WHY CHOOSE US SECTION                */}
+        {/*                    WHY CHOOSE US SECTION               */}
         {/* ======================================================= */}
         <div className="w-full text-left mt-16 bg-[#e0f2fe] rounded-2xl p-6 sm:p-8 shadow-sm">
           <h2 className="text-2xl font-black text-[#38bdf8] uppercase tracking-wide mb-4">
@@ -164,7 +157,6 @@ export default function Home() {
             
             {/* Item 1 */}
             <div className="relative">
-              {/* Timeline Blue Dot Node */}
               <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
                 <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               </div>
@@ -244,100 +236,94 @@ export default function Home() {
         </div>
 
         {/* ======================================================= */}
-{/*                 OUR SERVICES IMAGE GRID                 */}
-{/* ======================================================= */}
-<div className="w-full max-w-xl mx-auto mt-8 px-2">
-  
-  {/* Section Header (Matches Screenshot 2026-06-23 131646.png style layout) */}
-  <div className="bg-[#38bdf8] text-white p-6 rounded-t-xl text-center shadow-sm">
-    <h2 className="text-3xl font-black uppercase tracking-tight mb-2">
-      Our Services
-    </h2>
-    <p className="text-xs sm:text-sm font-medium opacity-90 leading-relaxed">
-      We offer a range of premium car care services to keep your vehicle looking brand new. Simply browse what we can do for you below!
-    </p>
-  </div>
+        {/*                 OUR SERVICES IMAGE GRID                 */}
+        {/* ======================================================= */}
+        <div className="w-full max-w-xl mx-auto mt-8 px-2">
+          
+          <div className="bg-[#38bdf8] text-white p-6 rounded-t-xl text-center shadow-sm">
+            <h2 className="text-3xl font-black uppercase tracking-tight mb-2">
+              Our Services
+            </h2>
+            <p className="text-xs sm:text-sm font-medium opacity-90 leading-relaxed">
+              We offer a range of premium car care services to keep your vehicle looking brand new. Simply browse what we can do for you below!
+            </p>
+          </div>
 
-  {/* Cards Grid Container (Stacks vertically on mobile) */}
-  <div className="flex flex-col gap-4 mt-4">
+          <div className="flex flex-col gap-4 mt-4">
 
-    {/* Service Card 1 - Detailing */}
-    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-      {/* Background Image - Place your image file in public/images/detailing.jpg */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-        style={{ backgroundImage: "url('/images/detailing.jpg')" }} 
-      />
-      {/* Dark Overlay (Matches the image overlay in screenshots) */}
-      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-      {/* Card Content */}
-      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-          Car Wash
-        </h3>
-        <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
-          Thorough exterior wash for a spotless
-        </p>
-      </div>
-    </div>
+            {/* Service Card 1 - Wash */}
+            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                style={{ backgroundImage: "url('/images/detailing.jpg')" }} 
+              />
+              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
+              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+                  Car Wash
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+                  Thorough exterior wash for a spotless appearance.
+                </p>
+              </div>
+            </div>
 
-    {/* Service Card 2 - Ceramic Coating */}
-    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-        style={{ backgroundImage: "url('/images/ceramic.jpg')" }} 
-      />
-      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-          Car Detailinig
-        </h3>
-        <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
-          Deep Cleaning of interior & exterior for a like-new feel.
-        </p>
-      </div>
-    </div>
+            {/* Service Card 2 - Detailing */}
+            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                style={{ backgroundImage: "url('/images/ceramic.jpg')" }} 
+              />
+              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
+              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+                  Car Detailing
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+                  Deep Cleaning of interior & exterior for a like-new feel.
+                </p>
+              </div>
+            </div>
 
-    {/* Service Card 3 - Paint Correction */}
-    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-        style={{ backgroundImage: "url('/images/paint-fix.jpg')" }} 
-      />
-      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-          Paint Correction
-        </h3>
-        <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
-          Remove swirls, scratches & restore clarity
-        </p>
-      </div>
-    </div>
+            {/* Service Card 3 - Paint Correction */}
+            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                style={{ backgroundImage: "url('/images/paint-fix.jpg')" }} 
+              />
+              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
+              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+                  Paint Correction
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+                  Remove swirls, scratches & restore clarity.
+                </p>
+              </div>
+            </div>
 
-    {/* Service Card 4 - Window Tinting */}
-    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-        style={{ backgroundImage: "url('/images/tint.jpg')" }} 
-      />
-      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-          Body Repair
-        </h3>
-        <p className="text-sm sm:text-base text-white font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] tracking-wide">
-          Bumper scuffs, dents & paint touch ups.
-        </p>
-      </div>
-    </div>
+            {/* Service Card 4 - Body Repair */}
+            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                style={{ backgroundImage: "url('/images/tint.jpg')" }} 
+              />
+              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
+              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+                  Body Repair
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+                  Bumper scuffs, dents & paint touch ups.
+                </p>
+              </div>
+            </div>
 
-  </div>
-</div>
+          </div>
+        </div>
 
-
-{/* ======================================================= */}
-        {/*  PASTE THE WHATSAPP FORM CODE DIRECTLY BELOW THIS POINT */}
+        {/* ======================================================= */}
+        {/*                    WHATSAPP FORM SECTION                */}
         {/* ======================================================= */}
         <div className="w-full mt-12 bg-[#fef08a]/40 rounded-xl p-6 shadow-sm border border-yellow-200/50 text-left">
           
@@ -394,7 +380,10 @@ export default function Home() {
                     <span className="text-xs text-gray-500 font-medium block mb-1">City</span>
                     <input type="text" name="city" value={formData.city} onChange={handleChange} className="w-full p-2.5 bg-white border border-gray-300 rounded font-normal" />
                   </div>
-                  
+                  <div className="w-1/2">
+                    <span className="text-xs text-gray-500 font-medium block mb-1">Postal Code</span>
+                    <input type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} className="w-full p-2.5 bg-white border border-gray-300 rounded font-normal" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -412,16 +401,10 @@ export default function Home() {
 
       </main>
 
-      {/* (Your Footer goes here) */}
-
-    </div>
-
-      </main>
-
       {/* ======================================================= */}
-      {/*                        FOOTER SECTION                    */}
+      {/*                        FOOTER SECTION                   */}
       {/* ======================================================= */}
-      <footer className="w-full text-center py-6 text-xs text-gray-500 border-t border-gray-200 bg-white">
+      <footer className="w-full text-center py-6 text-xs text-gray-500 border-t border-gray-200 bg-white mt-auto">
         © {new Date().getFullYear()} Car Care. All rights reserved.
       </footer>
 
