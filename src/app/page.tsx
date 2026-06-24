@@ -36,20 +36,20 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans flex flex-col">
+    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans flex flex-col w-full overflow-x-hidden">
       
       {/* ======================================================= */}
-      {/*                       NAVBAR SECTION                    */}
+      {/*                    NAVBAR SECTION                       */}
       {/* ======================================================= */}
       <header className="w-full flex flex-col">
         
         {/* 1. TOP INFORMATION BAR */}
-        <div className="bg-[#1a202c] text-white text-xs px-4 py-2.5 flex flex-row justify-between items-center border-b border-gray-800">
+        <div className="bg-[#010102] text-white text-xs px-4 py-2.5 flex flex-row justify-between items-center border-b border-gray-800">
           <div className="flex items-center gap-1.5 font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 text-sky-400">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.415-5.114-3.704-6.533-6.532l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
             </svg>
-            <span>+91 81969 52780</span>
+            <span>+1 647-916-1495</span>
           </div>
           <div className="flex items-center gap-1.5 font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 text-sky-400">
@@ -60,13 +60,11 @@ export default function Home() {
         </div>
 
         {/* 2. MAIN LOGO & NAVIGATION AREA */}
-        <div className="bg-[#38bdf8] text-white px-4 sm:px-6 py-4 flex justify-between items-center shadow-md relative">
-          {/* Logo Text */}
+        <div className="bg-[#f83838] text-white px-4 sm:px-6 py-4 flex justify-between items-center shadow-md relative">
           <Link href="/" className="text-2xl font-black tracking-tight drop-shadow-sm">
             9 Torrious Car Care
           </Link>
 
-          {/* Desktop Links */}
           <nav className="hidden md:flex items-center gap-6 font-semibold text-sm">
             <Link href="/" className="hover:text-black transition-colors">Home</Link>
             <Link href="/about" className="hover:text-black transition-colors">About Us</Link>
@@ -75,7 +73,6 @@ export default function Home() {
             <Link href="/contact" className="hover:text-black transition-colors">Contact Us</Link>
           </nav>
 
-          {/* Mobile Hamburger Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)} 
             className="md:hidden p-1 rounded focus:outline-none hover:bg-sky-500 transition-colors"
@@ -90,7 +87,6 @@ export default function Home() {
             </svg>
           </button>
 
-          {/* Mobile Dropdown Drawer Menu */}
           {isOpen && (
             <nav className="absolute top-full left-0 w-full bg-[#38bdf8] border-t border-sky-400 flex flex-col p-4 gap-3 font-semibold text-base shadow-xl z-50 md:hidden">
               <Link href="/" onClick={() => setIsOpen(false)} className="py-2 border-b border-sky-400/30 hover:text-black">Home</Link>
@@ -103,7 +99,7 @@ export default function Home() {
         </div>
 
         {/* 3. FULL-WIDTH CALL TO ACTION BUTTON */}
-        <div className="bg-[#38bdf8] px-4 pb-4 md:px-6">
+        <div className="bg-[#f83838] px-4 pb-4 md:px-6">
           <Link 
             href="/contact" 
             className="w-full bg-[#f97316] hover:bg-orange-600 text-white font-bold text-sm py-3 px-4 rounded flex items-center justify-center gap-2 shadow transition-all active:scale-[0.99]"
@@ -119,128 +115,128 @@ export default function Home() {
       {/* ======================================================= */}
       {/*                        HERO SECTION                     */}
       {/* ======================================================= */}
-      <main className="flex-grow flex flex-col items-center justify-center px-4 py-12 text-center max-w-xl mx-auto w-full">
+      <div className="relative overflow-hidden w-full h-[480px] flex flex-col items-center justify-center px-4 text-center shadow-md bg-zinc-900">
         
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mb-3 leading-tight">
-          9 Torrious Car Care
-        </h2>
-        
-        <p className="text-gray-600 text-sm sm:text-base font-medium mb-2">
-          ⭐⭐⭐⭐⭐
-        </p>
-        <p className="text-gray-600 text-sm sm:text-base font-medium mb-6">
-          5-star rated local home <br />
-          maintenance team you can trust!
-        </p>
-
-        <Link 
-          href="/services" 
-          className="bg-black hover:bg-gray-800 text-white font-bold text-sm py-3 px-8 rounded shadow mb-12 transition-all"
+        {/* Background Video - Locked 100% inside this section height */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none"
         >
-          View Services
-        </Link>
+          <source src="/videos/car-cae-bg.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark overlay tint over video */}
+        <div className="absolute inset-0 bg-black/45 z-10" />
+
+        {/* Hero Text Content Grid Wrapper */}
+        <div className="relative z-20 flex flex-col items-center max-w-xl mx-auto w-full">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3 leading-tight drop-shadow-md">
+            9 Torrious Car Care
+          </h2>
+          
+          <p className="text-yellow-400 text-sm sm:text-base font-medium mb-2 drop-shadow">
+            ⭐⭐⭐⭐⭐
+          </p>
+          
+          <p className="text-zinc-100 text-sm sm:text-base font-medium mb-6 leading-relaxed drop-shadow">
+            5-star rated Car Service <br />
+            Our team you can trust!
+          </p>
+
+          <Link 
+            href="/services" 
+            className="inline-block bg-white hover:bg-zinc-200 text-black font-bold text-sm py-3 px-8 rounded shadow-md transition-all active:scale-[0.98]"
+          >
+            View Services
+          </Link>
+        </div>
+      </div>
+
+      {/* ======================================================= */}
+      {/*                CENTERED PAGE SECTIONS CONTENT           */}
+      {/* ======================================================= */}
+      <div className="w-full max-w-xl mx-auto px-4 flex flex-col gap-12 pb-16">
 
         {/* ======================================================= */}
-        {/*                    WHY CHOOSE US SECTION               */}
+        {/*                    WHY CHOOSE US SECTION                */}
         {/* ======================================================= */}
-        <div className="w-full text-left mt-16 bg-[#e0f2fe] rounded-2xl p-6 sm:p-8 shadow-sm">
-          <h2 className="text-2xl font-black text-[#38bdf8] uppercase tracking-wide mb-4">
+        <div className="w-full text-left mt-12 bg-black border border-[#d62828] rounded-2xl p-6 sm:p-8 shadow-md">
+          <h2 className="text-2xl font-black text-white uppercase tracking-wide mb-4">
             Why Choose Us:
           </h2>
           
-          <p className="text-gray-700 text-sm font-medium mb-8 leading-relaxed">
-            At Rent2GO, we go above and beyond to ensure your vehicle rental needs are met with professionalism, care, and convenience. Here’s why we’re the right choice for you:
+          <p className="text-white text-sm font-medium mb-8 leading-relaxed opacity-90">
+            At Torquius, we go above and beyond to ensure your vehicle needs are met with professionalism, care, and convenience. Here’s why we’re the right choice for you:
           </p>
 
           {/* Timeline Wrapper Container */}
-          <div className="relative border-l-2 border-sky-400 pl-6 ml-3 flex flex-col gap-8">
+          <div className="relative border-l-2 border-zinc-800 pl-6 ml-3 flex flex-col gap-8">
             
             {/* Item 1 */}
             <div className="relative">
-              <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
-                <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
+                <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
               </div>
-              <h3 className="text-base font-bold text-gray-900 mb-1">Locally Owned & Operated</h3>
-              <p className="text-gray-600 text-sm leading-normal">
-                We're proud local operators dedicated to serving our community with reliable, top-tier hometown service.
+              <h3 className="text-base font-bold text-white mb-1">Locally Owned & Operated</h3>
+              <p className="text-zinc-300 text-sm leading-normal opacity-90">
+                We're proud local operators dedicated to serving our community with reliable, top-tier car care service.
               </p>
             </div>
 
             {/* Item 2 */}
             <div className="relative">
-              <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
+              <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
-              <h3 className="text-base font-bold text-gray-900 mb-1">Fully Licensed & Insured</h3>
-              <p className="text-gray-600 text-sm leading-normal">
+              <h3 className="text-base font-bold text-white mb-1">Fully Licensed & Insured</h3>
+              <p className="text-zinc-300 text-sm leading-normal opacity-90">
                 Rest assured knowing you're traveling with fully registered and comprehensively insured vehicles meeting all standard safety checks.
               </p>
             </div>
 
             {/* Item 3 */}
             <div className="relative">
-              <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
+              <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
-              <h3 className="text-base font-bold text-gray-900 mb-1">Affordable Pricing</h3>
-              <p className="text-gray-600 text-sm leading-normal">
-                Transparent rates that won't break the bank—always upfront, completely fair, and with absolutely no hidden booking charges.
+              <h3 className="text-base font-bold text-white mb-1">Affordable Pricing</h3>
+              <p className="text-zinc-300 text-sm leading-normal opacity-90">
+                Car Services rates that won't break the bank—always upfront, completely fair, and with absolutely no hidden booking charges.
               </p>
             </div>
 
             {/* Item 4 */}
             <div className="relative">
-              <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
+              <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
-              <h3 className="text-base font-bold text-gray-900 mb-1">100% Satisfaction</h3>
-              <p className="text-gray-600 text-sm leading-normal">
-                If your journey isn't smooth, neither are we. That's why making your booking and travel experience perfect is our top priority.
+              <h3 className="text-base font-bold text-white mb-1">100% Satisfaction</h3>
+              <p className="text-zinc-300 text-sm leading-normal opacity-90">
+                If your journey isn't smooth, neither are we. You can inform us until you are not satisfied.
               </p>
             </div>
 
             {/* Item 5 */}
             <div className="relative">
-              <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
+              <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
-              <h3 className="text-base font-bold text-gray-900 mb-1">Experienced & Friendly Team</h3>
-              <p className="text-gray-600 text-sm leading-normal">
-                Our support team combines professional field expertise with a friendly, approachable attitude to make every trip enjoyable.
+              <h3 className="text-base font-bold text-white mb-1">Experienced & Friendly Team</h3>
+              <p className="text-zinc-300 text-sm leading-normal opacity-90">
+                Our support team combines professional field expertise with a friendly, approachable attitude to make every contact enjoyable.
               </p>
-            </div>
-
-            {/* Item 6 */}
-            <div className="relative">
-              <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
-                <div className="w-1.5 h-1.5 rounded-full bg-white" />
-              </div>
-              <h3 className="text-base font-bold text-gray-900 mb-1">Certified Fleet</h3>
-              <p className="text-gray-600 text-sm leading-normal">
-                Trained personnel, thoroughly sanitized interiors, and rigorous background-checked operations for a secure ride.
-              </p>
-            </div>
-
-            {/* Item 7 */}
-            <div className="relative">
-              <div className="absolute -left-[35px] top-0.5 bg-[#38bdf8] text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm">
-                <div className="w-1.5 h-1.5 rounded-full bg-white" />
-              </div>
-              <h3 className="text-base font-bold text-gray-900 mb-1">All-In-One Travel Solutions</h3>
-              <p className="text-gray-600 text-sm leading-normal">
-                From luxury wedding cars to regular self-drive tour packages, trust us to provide all your transport needs under one single roof.
-              </p>
-            </div>
-
+            </div>   
           </div>
         </div>
 
         {/* ======================================================= */}
         {/*                 OUR SERVICES IMAGE GRID                 */}
         {/* ======================================================= */}
-        <div className="w-full max-w-xl mx-auto mt-8 px-2">
-          
-          <div className="bg-[#38bdf8] text-white p-6 rounded-t-xl text-center shadow-sm">
+        <div className="w-full mt-4">
+          <div className="bg-[#f85838] text-white p-6 rounded-t-xl text-center shadow-sm">
             <h2 className="text-3xl font-black uppercase tracking-tight mb-2">
               Our Services
             </h2>
@@ -250,12 +246,11 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-4 mt-4">
-
             {/* Service Card 1 - Wash */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                style={{ backgroundImage: "url('/images/detailing.jpg')" }} 
+                style={{ backgroundImage: "url('/images/carwashing.jpg')" }} 
               />
               <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
               <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
@@ -318,15 +313,13 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
           </div>
         </div>
 
         {/* ======================================================= */}
-        {/*                    WHATSAPP FORM SECTION                */}
+        {/*                     WHATSAPP FORM SECTION               */}
         {/* ======================================================= */}
-        <div className="w-full mt-12 bg-[#fef08a]/40 rounded-xl p-6 shadow-sm border border-yellow-200/50 text-left">
-          
+        <div className="w-full bg-[#fef08a]/40 rounded-xl p-6 shadow-sm border border-yellow-200/50 text-left">
           <h2 className="text-3xl font-black text-[#eab308] mb-2">Get a Free Quote</h2>
           <p className="text-sm font-bold text-gray-800 mb-6 leading-relaxed">
             Fill out the form below now and we'll get back to you as soon as possible with pricing and availability!
@@ -399,7 +392,7 @@ export default function Home() {
           </form>
         </div>
 
-      </main>
+      </div> {/* End of max-w-xl content box */}
 
       {/* ======================================================= */}
       {/*                        FOOTER SECTION                   */}
