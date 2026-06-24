@@ -1,10 +1,10 @@
-'use client'; // <-- THIS MUST BE LINE 1 AT THE VERY TOP
+'use client';
 
 import Link from "next/link";
-import { useState } from "react"; // <-- MAKE SURE THIS IMPORT IS HERE
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
-  // 1. ADD THIS STATE CODE RIGHT HERE (INSIDE THE TOP OF THE FUNCTION)
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     nameFirst: "",
@@ -23,8 +23,9 @@ export default function Home() {
 
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const businessNumber = "16479161495"; // <-- Put your WhatsApp phone number here!
-    const message = `*New Quote Request - 9 Torious Car Care*%0A` +
+    const businessNumber = "16479161495";
+    const message =
+      `*New Quote Request - 9 Torious Car Care*%0A` +
       `---------------------------------------%0A` +
       `• *Name:* ${formData.nameFirst} ${formData.nameLast}%0A` +
       `• *Phone:* ${formData.phone}%0A` +
@@ -37,13 +38,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 font-sans flex flex-col w-full overflow-x-hidden">
-      
+
       {/* ======================================================= */}
       {/*                    NAVBAR SECTION                       */}
       {/* ======================================================= */}
       <header className="w-full flex flex-col">
-        
-        {/* 1. TOP INFORMATION BAR */}
+
+        {/* TOP INFORMATION BAR */}
         <div className="bg-[#010102] text-white text-xs px-4 py-2.5 flex flex-row justify-between items-center border-b border-gray-800">
           <div className="flex items-center gap-1.5 font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 text-sky-400">
@@ -59,7 +60,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 2. MAIN LOGO & NAVIGATION AREA */}
+        {/* MAIN LOGO & NAVIGATION AREA */}
         <div className="bg-[#f83838] text-white px-4 sm:px-6 py-4 flex justify-between items-center shadow-md relative">
           <Link href="/" className="text-2xl font-black tracking-tight drop-shadow-sm">
             9 Torrious Car Care
@@ -73,8 +74,8 @@ export default function Home() {
             <Link href="/contact" className="hover:text-black transition-colors">Contact Us</Link>
           </nav>
 
-          <button 
-            onClick={() => setIsOpen(!isOpen)} 
+          <button
+            onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-1 rounded focus:outline-none hover:bg-sky-500 transition-colors"
             aria-label="Toggle Menu"
           >
@@ -98,10 +99,10 @@ export default function Home() {
           )}
         </div>
 
-        {/* 3. FULL-WIDTH CALL TO ACTION BUTTON */}
+        {/* FULL-WIDTH CALL TO ACTION BUTTON */}
         <div className="bg-[#f83838] px-4 pb-4 md:px-6">
-          <Link 
-            href="/contact" 
+          <Link
+            href="/contact"
             className="w-full bg-[#f97316] hover:bg-orange-600 text-white font-bold text-sm py-3 px-4 rounded flex items-center justify-center gap-2 shadow transition-all active:scale-[0.99]"
           >
             <span>Get a Free Quote</span>
@@ -113,41 +114,40 @@ export default function Home() {
       </header>
 
       {/* ======================================================= */}
-      {/*                        HERO SECTION                     */}
+      {/*                     HERO SECTION                        */}
       {/* ======================================================= */}
       <div className="relative overflow-hidden w-full h-[480px] flex flex-col items-center justify-center px-4 text-center shadow-md bg-zinc-900">
-        
-        {/* Background Video - Locked 100% inside this section height */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none"
+          // ⚠️ Make sure this file exists at: public/videos/car-care-bg.mp4
+          // Check the exact filename — your original had a typo "car-cae-bg.mp4"
         >
-          <source src="/videos/car-cae-bg.mp4" type="video/mp4" />
+          <source src="/videos/car-care-bg.mp4" type="video/mp4" />
         </video>
-        
-        {/* Dark overlay tint over video */}
+
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/45 z-10" />
 
-        {/* Hero Text Content Grid Wrapper */}
+        {/* Hero Text */}
         <div className="relative z-20 flex flex-col items-center max-w-xl mx-auto w-full">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3 leading-tight drop-shadow-md">
             9 Torrious Car Care
           </h2>
-          
           <p className="text-yellow-400 text-sm sm:text-base font-medium mb-2 drop-shadow">
             ⭐⭐⭐⭐⭐
           </p>
-          
           <p className="text-zinc-100 text-sm sm:text-base font-medium mb-6 leading-relaxed drop-shadow">
             5-star rated Car Service <br />
             Our team you can trust!
           </p>
-
-          <Link 
-            href="/services" 
+          <Link
+            href="/services"
             className="inline-block bg-white hover:bg-zinc-200 text-black font-bold text-sm py-3 px-8 rounded shadow-md transition-all active:scale-[0.98]"
           >
             View Services
@@ -156,26 +156,23 @@ export default function Home() {
       </div>
 
       {/* ======================================================= */}
-      {/*                CENTERED PAGE SECTIONS CONTENT           */}
+      {/*              CENTERED PAGE SECTIONS CONTENT             */}
       {/* ======================================================= */}
       <div className="w-full max-w-xl mx-auto px-4 flex flex-col gap-12 pb-16">
 
         {/* ======================================================= */}
-        {/*                    WHY CHOOSE US SECTION                */}
+        {/*                  WHY CHOOSE US SECTION                  */}
         {/* ======================================================= */}
         <div className="w-full text-left mt-12 bg-black border border-[#d62828] rounded-2xl p-6 sm:p-8 shadow-md">
           <h2 className="text-2xl font-black text-white uppercase tracking-wide mb-4">
             Why Choose Us:
           </h2>
-          
           <p className="text-white text-sm font-medium mb-8 leading-relaxed opacity-90">
-            At Torquius, we go above and beyond to ensure your vehicle needs are met with professionalism, care, and convenience. Here’s why we’re the right choice for you:
+            At Torquius, we go above and beyond to ensure your vehicle needs are met with professionalism, care, and convenience. Here's why we're the right choice for you:
           </p>
 
-          {/* Timeline Wrapper Container */}
           <div className="relative border-l-2 border-zinc-800 pl-6 ml-3 flex flex-col gap-8">
-            
-            {/* Item 1 */}
+
             <div className="relative">
               <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
@@ -186,7 +183,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Item 2 */}
             <div className="relative">
               <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -197,7 +193,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Item 3 */}
             <div className="relative">
               <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -208,7 +203,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Item 4 */}
             <div className="relative">
               <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -219,7 +213,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Item 5 */}
             <div className="relative">
               <div className="absolute -left-[35px] top-0.5 bg-zinc-900 text-white p-1 rounded flex items-center justify-center w-5 h-5 shadow-sm border border-zinc-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -228,12 +221,12 @@ export default function Home() {
               <p className="text-zinc-300 text-sm leading-normal opacity-90">
                 Our support team combines professional field expertise with a friendly, approachable attitude to make every contact enjoyable.
               </p>
-            </div>   
+            </div>
           </div>
         </div>
 
         {/* ======================================================= */}
-        {/*                 OUR SERVICES IMAGE GRID                 */}
+        {/*                OUR SERVICES IMAGE GRID                  */}
         {/* ======================================================= */}
         <div className="w-full mt-4">
           <div className="bg-[#f85838] text-white p-6 rounded-t-xl text-center shadow-sm">
@@ -246,34 +239,39 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-4 mt-4">
-            {/* Service Card 1 - Wash */}
+
+            {/* Service Card 1 - Car Wash */}
+            {/* ⚠️ File must exist at: public/images/carwashing.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                style={{ backgroundImage: "url('/images/carwashing.jpg')" }} 
+              <Image
+                src="/images/carwashing.jpg"
+                alt="Car Wash Service"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 600px"
               />
               <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
               <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-                  Car Wash
-                </h3>
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Car Wash</h3>
                 <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
                   Thorough exterior wash for a spotless appearance.
                 </p>
               </div>
             </div>
 
-            {/* Service Card 2 - Detailing */}
+            {/* Service Card 2 - Car Detailing */}
+            {/* ⚠️ File must exist at: public/images/ceramic.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                style={{ backgroundImage: "url('/images/ceramic.jpg')" }} 
+              <Image
+                src="/images/ceramic.jpg"
+                alt="Car Detailing Service"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 600px"
               />
               <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
               <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-                  Car Detailing
-                </h3>
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Car Detailing</h3>
                 <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
                   Deep Cleaning of interior & exterior for a like-new feel.
                 </p>
@@ -281,16 +279,18 @@ export default function Home() {
             </div>
 
             {/* Service Card 3 - Paint Correction */}
+            {/* ⚠️ File must exist at: public/images/paint-fix.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                style={{ backgroundImage: "url('/images/paint-fix.jpg')" }} 
+              <Image
+                src="/images/paint-fix.jpg"
+                alt="Paint Correction Service"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 600px"
               />
               <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
               <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-                  Paint Correction
-                </h3>
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Paint Correction</h3>
                 <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
                   Remove swirls, scratches & restore clarity.
                 </p>
@@ -298,26 +298,29 @@ export default function Home() {
             </div>
 
             {/* Service Card 4 - Body Repair */}
+            {/* ⚠️ File must exist at: public/images/tint.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                style={{ backgroundImage: "url('/images/tint.jpg')" }} 
+              <Image
+                src="/images/tint.jpg"
+                alt="Body Repair Service"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 600px"
               />
               <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
               <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
-                  Body Repair
-                </h3>
+                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Body Repair</h3>
                 <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
                   Bumper scuffs, dents & paint touch ups.
                 </p>
               </div>
             </div>
+
           </div>
         </div>
 
         {/* ======================================================= */}
-        {/*                     WHATSAPP FORM SECTION               */}
+        {/*                  WHATSAPP FORM SECTION                  */}
         {/* ======================================================= */}
         <div className="w-full bg-[#fef08a]/40 rounded-xl p-6 shadow-sm border border-yellow-200/50 text-left">
           <h2 className="text-3xl font-black text-[#eab308] mb-2">Get a Free Quote</h2>
@@ -326,7 +329,7 @@ export default function Home() {
           </p>
 
           <form onSubmit={handleWhatsAppSubmit} className="flex flex-col gap-4 text-sm font-semibold text-gray-700">
-            
+
             {/* Name Fields */}
             <div>
               <label className="block mb-1">Name <span className="text-red-500">*</span></label>
@@ -360,9 +363,11 @@ export default function Home() {
               <input type="date" name="date" value={formData.date} onChange={handleChange} className="w-full p-2.5 bg-white border border-gray-300 rounded font-normal text-gray-600" />
             </div>
 
-            {/* Address Setup */}
+            {/* Address */}
             <div className="border-t border-gray-200/60 pt-4 mt-2">
-              <label className="block mb-2 text-gray-800 text-base font-bold">Service Location <span className="text-gray-400 text-xs font-normal">(Optional)</span></label>
+              <label className="block mb-2 text-gray-800 text-base font-bold">
+                Service Location <span className="text-gray-400 text-xs font-normal">(Optional)</span>
+              </label>
               <div className="flex flex-col gap-3">
                 <div>
                   <span className="text-xs text-gray-500 font-medium block mb-1">Street Address</span>
@@ -384,7 +389,7 @@ export default function Home() {
             {/* Submit Button */}
             <button type="submit" className="w-full mt-4 bg-[#f97316] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-lg flex items-center justify-center gap-2.5 shadow">
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.179.001 6.169 1.24 8.424 3.496 2.254 2.256 3.491 5.246 3.491 8.425 0 6.562-5.337 11.91-11.905 11.91-2.003-.001-3.97-.504-5.717-1.464L0 24zm6.59-4.846c1.666.988 3.311 1.626 5.309 1.628 5.373 0 9.743-4.373 9.746-9.749 0-2.604-1.012-5.052-2.85-6.892C17.003 2.293 14.545 1.28 11.96 1.28c-5.378 0-9.752 4.374-9.756 9.75-.001 1.915.49 3.489 1.423 5.074l-.993 3.626 3.712-.973z"/>
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.179.001 6.169 1.24 8.424 3.496 2.254 2.256 3.491 5.246 3.491 8.425 0 6.562-5.337 11.91-11.905 11.91-2.003-.001-3.97-.504-5.717-1.464L0 24zm6.59-4.846c1.666.988 3.311 1.626 5.309 1.628 5.373 0 9.743-4.373 9.746-9.749 0-2.604-1.012-5.052-2.85-6.892C17.003 2.293 14.545 1.28 11.96 1.28c-5.378 0-9.752 4.374-9.756 9.75-.001 1.915.49 3.489 1.423 5.074l-.993 3.626 3.712-.973z" />
               </svg>
               <span>Send via WhatsApp</span>
             </button>
@@ -392,10 +397,10 @@ export default function Home() {
           </form>
         </div>
 
-      </div> {/* End of max-w-xl content box */}
+      </div>
 
       {/* ======================================================= */}
-      {/*                        FOOTER SECTION                   */}
+      {/*                      FOOTER SECTION                     */}
       {/* ======================================================= */}
       <footer className="w-full text-center py-6 text-xs text-gray-500 border-t border-gray-200 bg-white mt-auto">
         © {new Date().getFullYear()} Car Care. All rights reserved.
