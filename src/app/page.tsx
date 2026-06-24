@@ -244,7 +244,7 @@ export default function Home() {
             {/* ⚠️ File must exist at: public/images/carwashing.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
               <Image
-                src="/images/carwashing.jpg"
+                src="/images/Carwashing.jpg"
                 alt="Car Wash Service"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -263,7 +263,7 @@ export default function Home() {
             {/* ⚠️ File must exist at: public/images/ceramic.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
               <Image
-                src="/images/ceramic.jpg"
+                src="/images/Ceramic.jpg"
                 alt="Car Detailing Service"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -282,7 +282,7 @@ export default function Home() {
             {/* ⚠️ File must exist at: public/images/paint-fix.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
               <Image
-                src="/images/paint-fix.jpg"
+                src="/images/Paint-fix.jpg"
                 alt="Paint Correction Service"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -301,7 +301,7 @@ export default function Home() {
             {/* ⚠️ File must exist at: public/images/tint.jpg */}
             <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
               <Image
-                src="/images/tint.jpg"
+                src="/images/Tint.jpg"
                 alt="Body Repair Service"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
