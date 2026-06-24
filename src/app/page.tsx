@@ -228,93 +228,91 @@ export default function Home() {
         {/* ======================================================= */}
         {/*                OUR SERVICES IMAGE GRID                  */}
         {/* ======================================================= */}
-        <div className="w-full mt-4">
-          <div className="bg-[#f85838] text-white p-6 rounded-t-xl text-center shadow-sm">
-            <h2 className="text-3xl font-black uppercase tracking-tight mb-2">
-              Our Services
-            </h2>
-            <p className="text-xs sm:text-sm font-medium opacity-90 leading-relaxed">
-              We offer a range of premium car care services to keep your vehicle looking brand new. Simply browse what we can do for you below!
-            </p>
-          </div>
+        {/* ======================================================= */}
+{/*                 OUR SERVICES IMAGE GRID                 */}
+{/* ======================================================= */}
+<div className="w-full mt-4">
+  <div className="bg-[#f85838] text-white p-6 rounded-t-xl text-center shadow-sm">
+    <h2 className="text-3xl font-black uppercase tracking-tight mb-2">
+      Our Services
+    </h2>
+    <p className="text-xs sm:text-sm font-medium opacity-90 leading-relaxed">
+      We offer a range of premium car care services to keep your vehicle looking brand new. Simply browse what we can do for you below!
+    </p>
+  </div>
 
-          <div className="flex flex-col gap-4 mt-4">
+  <div className="flex flex-col gap-4 mt-4">
+    {/* Service Card 1 - Wash */}
+    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group bg-zinc-800">
+      <img 
+        src="/Images/Cgit add .arwashing.jpg" 
+        alt="Car Wash Service"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-0"
+      />
+      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply z-10" />
+      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-20">
+        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+          Car Wash
+        </h3>
+        <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+          Thorough exterior wash for a spotless appearance.
+        </p>
+      </div>
+    </div>
 
-            {/* Service Card 1 - Car Wash */}
-            {/* ⚠️ File must exist at: public/images/carwashing.jpg */}
-            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <Image
-                src="/images/Carwashing.jpg"
-                alt="Car Wash Service"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 600px"
-              />
-              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Car Wash</h3>
-                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
-                  Thorough exterior wash for a spotless appearance.
-                </p>
-              </div>
-            </div>
+    {/* Service Card 2 - Detailing */}
+    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group bg-zinc-800">
+      <img 
+        src="/Images/Ceramic.jpg" 
+        alt="Car Detailing Service"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-0"
+      />
+      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply z-10" />
+      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-20">
+        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+          Car Detailing
+        </h3>
+        <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+          Deep Cleaning of interior & exterior for a like-new feel.
+        </p>
+      </div>
+    </div>
 
-            {/* Service Card 2 - Car Detailing */}
-            {/* ⚠️ File must exist at: public/images/ceramic.jpg */}
-            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <Image
-                src="/images/Ceramic.jpg"
-                alt="Car Detailing Service"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 600px"
-              />
-              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Car Detailing</h3>
-                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
-                  Deep Cleaning of interior & exterior for a like-new feel.
-                </p>
-              </div>
-            </div>
+    {/* Service Card 3 - Paint Correction */}
+    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group bg-zinc-800">
+      <img 
+        src="/Images/Paint-fix.jpg" 
+        alt="Paint Correction Service"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-0"
+      />
+      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply z-10" />
+      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-20">
+        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+          Paint Correction
+        </h3>
+        <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+          Remove swirls, scratches & restore clarity.
+        </p>
+      </div>
+    </div>
 
-            {/* Service Card 3 - Paint Correction */}
-            {/* ⚠️ File must exist at: public/images/paint-fix.jpg */}
-            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <Image
-                src="/images/Paint-fix.jpg"
-                alt="Paint Correction Service"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 600px"
-              />
-              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Paint Correction</h3>
-                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
-                  Remove swirls, scratches & restore clarity.
-                </p>
-              </div>
-            </div>
-
-            {/* Service Card 4 - Body Repair */}
-            {/* ⚠️ File must exist at: public/images/tint.jpg */}
-            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group">
-              <Image
-                src="/images/Tint.jpg"
-                alt="Body Repair Service"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 600px"
-              />
-              <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply" />
-              <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-10">
-                <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">Body Repair</h3>
-                <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
-                  Bumper scuffs, dents & paint touch ups.
-                </p>
-              </div>
-            </div>
+    {/* Service Card 4 - Body Repair */}
+    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group bg-zinc-800">
+      <img 
+        src="/Images/Tint.jpg" 
+        alt="Body Repair Service"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-0"
+      />
+      <div className="absolute inset-0 bg-slate-900/50 mix-blend-multiply z-10" />
+      <div className="absolute inset-0 p-6 flex flex-col justify-end text-left text-white z-20">
+        <h3 className="text-2xl font-black tracking-wide mb-1 drop-shadow-sm">
+          Body Repair
+        </h3>
+        <p className="text-xs sm:text-sm text-gray-200 font-medium drop-shadow-sm">
+          Bumper scuffs, dents & paint touch ups.
+        </p>
+      </div>
+    </div>
 
           </div>
         </div>
