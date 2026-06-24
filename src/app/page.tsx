@@ -245,7 +245,7 @@ export default function Home() {
     {/* Service Card 1 - Wash */}
     <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-md group bg-zinc-800">
       <img 
-        src="/Images/Cgit add .arwashing.jpg" 
+        src="/Images/Carwashing.jpg" 
         alt="Car Wash Service"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 z-0"
       />
