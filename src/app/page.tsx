@@ -2,8 +2,76 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
+// =======================================================
+// 1. SERVICE CARD COMPONENT (PLACED OUTSIDE HOME)
+// =======================================================
+const ServiceCard = ({ service }: { service: any }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div 
+      ref={cardRef}
+      className={`relative w-full h-52 rounded-2xl overflow-hidden shadow-lg border-4 border-white group bg-slate-900 
+        transition-all duration-700 ease-out transform
+        ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}
+    >
+      {/* Background Image Container */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
+      <div 
+        className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" 
+        style={{ backgroundImage: `url('${service.imgSrc}')` }}
+      />
+      
+      {/* Content Layout Area */}
+      <div className="absolute inset-0 flex flex-col justify-end items-start p-6 z-20 text-left">
+        <h3 className="text-white text-2xl font-black tracking-tight mb-1 drop-shadow-md">
+          {service.title}
+        </h3>
+        <p className="text-zinc-200 text-xs font-semibold max-w-[85%] leading-relaxed mb-4 drop-shadow-sm">
+          {service.description}
+        </p>
+        <Link 
+          href={`/services/${service.id}`} 
+          className="bg-[#fcd34d] hover:bg-[#fbbf24] text-slate-900 text-xs font-bold py-2.5 px-4 rounded-full flex items-center gap-1.5 transition-all shadow-md active:scale-[0.98]"
+        >
+          <span>Know More</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-3 h-3">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
+// =======================================================
+// 2. MAIN HOME PAGE APPLICATION COMPONENT
+// =======================================================
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("full"); // For package switcher
@@ -24,6 +92,8 @@ export default function Home() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Your return ( ... JSX UI elements continue down here )
+
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const businessNumber = "16479161495";
@@ -43,14 +113,32 @@ export default function Home() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+
+
+
+
+  
   return (
-    <div className="min-h-screen bg-[#f7faff] text-gray-900 font-sans flex flex-col w-full overflow-x-hidden antialiased">
+    <div className="relative w-full bg-[#f4f8fe] text-gray-900 font-sans antialiased overflow-x-hidden">
+      {/* ======================================================= */}
+      {/* PREMIUM SOFT-EDGE BACKGROUND IMAGE & VIGNETTE LAYER    */}
+      {/* ======================================================= */}
+      <div className="absolute top-0 left-0 right-0 h-[55vh] z-0 overflow-hidden pointer-events-none select-none">
+        <img 
+          src="/hero-car.png" 
+          alt="Premium Detailing" 
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Soft darkening layers to handle text readability and transition beautifully to the rest of your page */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-[#f4f8fe]" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f4f8fe] via-[#f4f8fe]/80 to-transparent" />
+      </div>
 
       {/* ======================================================= */}
-      {/* NAVBAR SECTION                                          */}
+      {/* NAVBAR SECTION (APPLE GLASS SPEC)                       */}
       {/* ======================================================= */}
       <header className="w-full max-w-md mx-auto px-4 pt-4 relative z-50">
-        <div className="bg-white/80 backdrop-blur-md rounded-full px-6 py-3 flex justify-between items-center shadow-sm border border-white/40">
+        <div className="bg-white/40 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3.5 flex justify-between items-center shadow-[0_4px_30px_rgba(0,0,0,0.03)] border border-white/60">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-black text-xl tracking-tight text-slate-900">
               9Torious<span className="text-red-600">.</span>
@@ -58,7 +146,7 @@ export default function Home() {
           </Link>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-slate-600">Menu</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-800/80">Menu</span>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="flex flex-col justify-center items-end gap-1.5 w-6 h-6 focus:outline-none"
@@ -72,7 +160,7 @@ export default function Home() {
         </div>
 
         {isOpen && (
-          <nav className="absolute top-full left-4 right-4 mt-2 bg-white rounded-2xl p-4 flex flex-col gap-2 font-medium text-sm shadow-xl border border-slate-100 z-50">
+          <nav className="absolute top-full left-4 right-4 mt-2 bg-white/80 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 font-medium text-sm shadow-2xl border border-white/40 z-50">
             <Link href="/" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">Home</Link>
             <Link href="services" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">Services</Link>
             <Link href="#packages" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">Packages</Link>
@@ -83,61 +171,68 @@ export default function Home() {
       </header>
 
       {/* ======================================================= */}
-      {/* HERO HERO SECTION                                       */}
+      {/* HERO HERO SECTION                                      */}
       {/* ======================================================= */}
-      <main className="flex-1 flex flex-col items-center max-w-md mx-auto w-full px-4 pt-8 pb-12 text-center">
+      <main className="relative z-10 max-w-md mx-auto w-full px-4 pt-8 pb-16 text-center flex flex-col items-center">
         
-        <div className="inline-flex items-center gap-1 bg-white/70 backdrop-blur-sm border border-white/90 rounded-full px-4 py-1.5 shadow-sm text-xs font-semibold text-slate-800 mb-6">
-          <div className="flex text-amber-400 tracking-tighter">⭐⭐⭐⭐⭐</div>
-          <span className="ml-1 text-slate-600">Trusted by 25+ customers</span>
+        <div className="flex flex-col items-center">
+          {/* Glass pill backdrop adjusted for dark images */}
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-5 py-2 shadow-sm text-xs font-semibold text-white mb-6">
+            <div className="flex text-amber-400 tracking-tighter">⭐⭐⭐⭐⭐</div>
+            <span className="ml-1 text-white/90 font-medium tracking-tight">Trusted by 25+ customers</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-3 leading-tight drop-shadow-md">
+            9Torious
+          </h1>
+          
+          <p className="text-white/90 italic font-medium text-sm sm:text-base flex items-center justify-center gap-1.5 mb-6 drop-shadow-sm">
+            Get Service At Home or At Your Workplace 
+            <span className="text-red-400 text-xs animate-pulse">❤️</span>
+          </p>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 mb-2 leading-tight">
-          9Torious
-        </h1>
-        
-        <p className="text-slate-700 italic font-medium text-sm sm:text-base flex items-center justify-center gap-1.5 mb-6">
-          Get Service At Home or At Your Workplace 
-          <span className="text-red-400 text-xs">❤️</span>
-        </p>
-
-        <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-4 border-white mb-8">
-          <div className="absolute inset-0 bg-slate-200 z-0" />
-          <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-10 pointer-events-none">
-            <source src="/videos/car-care-bg.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/20 to-transparent z-20 pointer-events-none" />
-        </div>
-
-        <div className="w-full flex flex-col gap-3.5 px-2 mb-12">
+        {/* Premium Action Buttons Layer */}
+        <div className="w-full flex flex-col gap-3.5 px-2 pt-24 mb-8">
           <Link
             href="/quote"
-            className="w-full bg-[#fcd34d] hover:bg-[#fbbf24] text-slate-900 font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-1.5 shadow transition-all active:scale-[0.99]"
+            className="w-full bg-gradient-to-b from-[#ffea53] via-[#fdd53c] to-[#fbc328] hover:brightness-105 text-slate-950 font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-1.5 shadow-[0_12px_24px_-6px_rgba(251,195,40,0.3)] transition-all duration-300 active:scale-[0.98]"
           >
             <span>Get Free Quote</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4 text-slate-950">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </Link>
 
           <a
             href="tel:+16479161495"
-            className="w-full bg-[#27272a] hover:bg-[#18181b] text-white font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-2 shadow transition-all active:scale-[0.99]"
+            className="w-full bg-gradient-to-b from-[#2e2e33] to-[#1c1c1f] hover:brightness-110 text-white font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-2 shadow-[0_12px_24px_-6px_rgba(0,0,0,0.15)] transition-all duration-300 active:scale-[0.98]"
           >
             <span>Call Now</span>
           </a>
         </div>
 
-        <div className="text-slate-400 animate-bounce mb-16">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
+        {/* Soft Animated Chevron */}
+        <div className="text-slate-800/80 animate-bounce mt-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
         </div>
+  
+
+
+
+
+
+
+
+
+
 
         {/* ======================================================= */}
         {/* SERVICES SECTION (image_3ec64d.png style)                */}
         {/* ======================================================= */}
-       <section id="services" className="w-full mb-16 text-center">
+       <section id="services" className="w-full mb-16 text-center max-w-md mx-auto px-4">
   <h2 className="text-3xl font-black tracking-tight text-slate-900 mb-6">Our Main Services</h2>
   
   <div className="flex flex-col gap-5 w-full">
@@ -167,39 +262,17 @@ export default function Home() {
         imgSrc: '/Images/Tint.jpg',
       },
     ].map((service) => (
-      <div 
-        key={service.id} 
-        className="relative w-full h-52 rounded-2xl overflow-hidden shadow-lg border-4 border-white group bg-slate-900"
-      >
-        {/* Background Image Container */}
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <div 
-          className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" 
-          style={{ backgroundImage: `url('${service.imgSrc}')` }}
-        />
-        
-        {/* Content Layout Area */}
-        <div className="absolute inset-0 flex flex-col justify-end items-start p-6 z-20 text-left">
-          <h3 className="text-white text-2xl font-black tracking-tight mb-1 drop-shadow-md">
-            {service.title}
-          </h3>
-          <p className="text-zinc-200 text-xs font-semibold max-w-[85%] leading-relaxed mb-4 drop-shadow-sm">
-            {service.description}
-          </p>
-          <Link 
-            href={`/services/${service.id}`} 
-            className="bg-[#fcd34d] hover:bg-[#fbbf24] text-slate-900 text-xs font-bold py-2.5 px-4 rounded-full flex items-center gap-1.5 transition-all shadow-md active:scale-[0.98]"
-          >
-            <span>Know More</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-3 h-3">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
-        </div>
-      </div>
+      <ServiceCard key={service.id} service={service} />
     ))}
   </div>
 </section>
+
+
+
+
+
+
+
 
 {/* ======================================================= */}
 {/* ACCENT TRANSFORMATION TEXT                              */}
@@ -283,6 +356,12 @@ export default function Home() {
             </Link>
           </div>
         </section>
+
+
+
+
+
+
 
         {/* ======================================================= */}
         {/* WHATSAPP FORM SECTION                                  */}
