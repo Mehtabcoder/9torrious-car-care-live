@@ -118,157 +118,158 @@ export default function Home() {
 
 
   
-  return (
-    <div className="relative w-full bg-[#f4f8fe] text-gray-900 font-sans antialiased overflow-x-hidden">
-      {/* ======================================================= */}
-      {/* PREMIUM SOFT-EDGE BACKGROUND IMAGE & VIGNETTE LAYER    */}
-      {/* ======================================================= */}
-      <div className="absolute top-0 left-0 right-0 h-[55vh] z-0 overflow-hidden pointer-events-none select-none">
-        <img 
-          src="/hero-car.png" 
-          alt="Premium Detailing" 
-          className="w-full h-full object-cover object-center"
-        />
-        {/* Soft darkening layers to handle text readability and transition beautifully to the rest of your page */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-[#f4f8fe]" />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f4f8fe] via-[#f4f8fe]/80 to-transparent" />
+ return (
+  <div className="relative w-full bg-[#f4f8fe] text-gray-900 font-sans antialiased overflow-x-hidden">
+    
+    {/* ======================================================= */}
+    {/* PREMIUM GRADIENT HERO BACKDROP LAYER                    */}
+    {/* ======================================================= */}
+    {/* This creates the rich, dark-blue glassy background gradient behind the hero area */}
+    <div className="absolute top-0 left-0 right-0 h-[92vh] bg-gradient-to-b from-[#271111] via-[#aa2016] to-[#f4f8fe] z-0" />
+
+    {/* ======================================================= */}
+    {/* NAVBAR SECTION (APPLE GLASS SPEC)                      */}
+    {/* ======================================================= */}
+    <header className="w-full max-w-md mx-auto px-4 pt-4 relative z-50">
+      {/* Frosted Glass Bar - Perfectly blends with the dark backdrop */}
+      <div className="bg-white/10 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3.5 flex justify-between items-center shadow-[0_4px_30px_rgba(0,0,0,0.2)] border border-white/20">
+        <Link href="/" className="flex items-center gap-2">
+          <span className="font-black text-xl tracking-tight text-white">
+            9Torious<span className="text-red-500">.</span>
+          </span>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-bold uppercase tracking-wider text-white/80">Menu</span>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex flex-col justify-center items-end gap-1.5 w-6 h-6 focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <span className={`h-0.5 bg-white rounded transition-all duration-300 ${isOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`} />
+            <span className={`h-0.5 bg-white rounded transition-all duration-300 ${isOpen ? 'w-0 opacity-0' : 'w-4'}`} />
+            <span className={`h-0.5 bg-white rounded transition-all duration-300 ${isOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-5'}`} />
+          </button>
+        </div>
       </div>
 
-      {/* ======================================================= */}
-      {/* NAVBAR SECTION (APPLE GLASS SPEC)                       */}
-      {/* ======================================================= */}
-      <header className="w-full max-w-md mx-auto px-4 pt-4 relative z-50">
-        <div className="bg-white/40 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3.5 flex justify-between items-center shadow-[0_4px_30px_rgba(0,0,0,0.03)] border border-white/60">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-black text-xl tracking-tight text-slate-900">
-              9Torious<span className="text-red-600">.</span>
-            </span>
-          </Link>
+      {isOpen && (
+        <nav className="absolute top-full left-4 right-4 mt-2 bg-red-950/80 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 font-medium text-sm shadow-2xl border border-red-500/20 z-50 text-white">
+          <Link href="/" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">Home</Link>
+          <Link href="services" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">Services</Link>
+          <Link href="#packages" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">Packages</Link>
+          <Link href="#quote" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">Get Free Quote</Link>
+          <Link href="#faq" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">FAQ</Link>
+        </nav>
+      )}
+    </header>
 
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-800/80">Menu</span>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex flex-col justify-center items-end gap-1.5 w-6 h-6 focus:outline-none"
-              aria-label="Toggle Menu"
-            >
-              <span className={`h-0.5 bg-slate-800 rounded transition-all duration-300 ${isOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`} />
-              <span className={`h-0.5 bg-slate-800 rounded transition-all duration-300 ${isOpen ? 'w-0 opacity-0' : 'w-4'}`} />
-              <span className={`h-0.5 bg-slate-800 rounded transition-all duration-300 ${isOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-5'}`} />
-            </button>
-          </div>
-        </div>
+    {/* ======================================================= */}
+    {/* HERO CONTENT SECTION (STCKED LAYOUT)                   */}
+    {/* ======================================================= */}
+    <main className="relative z-10 max-w-md mx-auto w-full px-4 pt-8 pb-16 text-center flex flex-col items-center">
+  
+  {/* 1. BRAND CONTENT (White text glowing on gradient background with synchronized animations) */}
+  <div className="flex flex-col items-center mb-6">
+    
+    {/* Premium Frosted Glass Pill (Slides in smoothly from the left) */}
+    <div 
+      className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-5 py-2 shadow-md text-xs font-semibold text-white mb-4 opacity-0 animate-[slideInLeft_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+      style={{ animationDelay: '0.2s' }}
+    >
+      <div className="flex text-amber-400 tracking-tighter">⭐⭐⭐⭐⭐</div>
+      <span className="ml-1 text-white/90 font-medium tracking-tight">Trusted by 25+ customers</span>
+    </div>
 
-        {isOpen && (
-          <nav className="absolute top-full left-4 right-4 mt-2 bg-white/80 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 font-medium text-sm shadow-2xl border border-white/40 z-50">
-            <Link href="/" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">Home</Link>
-            <Link href="services" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">Services</Link>
-            <Link href="#packages" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">Packages</Link>
-            <Link href="#quote" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">Get Free Quote</Link>
-            <Link href="#faq" onClick={() => setIsOpen(false)} className="px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">FAQ</Link>
-          </nav>
-        )}
-      </header>
-
-      {/* ======================================================= */}
-      {/* HERO HERO SECTION                                      */}
-      {/* ======================================================= */}
-      <main className="relative z-10 max-w-md mx-auto w-full px-4 pt-8 pb-16 text-center flex flex-col items-center">
+       <h1 className="text-4xl font-black tracking-tight text-white mb-2 leading-tight drop-shadow-md flex justify-center overflow-hidden">
+  {"9Torious".split("").map((char, index) => (
+    <span
+      key={index}
+      className="inline-block opacity-0 animate-[shatterReveal_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+      style={{ animationDelay: `${index * 0.08}s` }}
+    >
+      {char}
+    </span>
+  ))}
+</h1>
         
-        <div className="flex flex-col items-center">
-          {/* Glass pill backdrop adjusted for dark images */}
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-5 py-2 shadow-sm text-xs font-semibold text-white mb-6">
-            <div className="flex text-amber-400 tracking-tighter">⭐⭐⭐⭐⭐</div>
-            <span className="ml-1 text-white/90 font-medium tracking-tight">Trusted by 25+ customers</span>
-          </div>
+       <p className="text-white/90 italic font-medium text-sm sm:text-base flex items-center justify-center gap-1.5 drop-shadow-sm opacity-0 animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]" style={{ animationDelay: '0.8s' }}>
+  <span>Get Service At Home or At Your Workplace</span> 
+  <span className="text-red-400 text-xs animate-pulse">❤️</span>
+</p>
+</div>
 
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-3 leading-tight drop-shadow-md">
-            9Torious
-          </h1>
-          
-          <p className="text-white/90 italic font-medium text-sm sm:text-base flex items-center justify-center gap-1.5 mb-6 drop-shadow-sm">
-            Get Service At Home or At Your Workplace 
-            <span className="text-red-400 text-xs animate-pulse">❤️</span>
-          </p>
-        </div>
-
-        {/* Premium Action Buttons Layer */}
-        <div className="w-full flex flex-col gap-3.5 px-2 pt-24 mb-8">
-          <Link
-            href="/quote"
-            className="w-full bg-gradient-to-b from-[#ffea53] via-[#fdd53c] to-[#fbc328] hover:brightness-105 text-slate-950 font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-1.5 shadow-[0_12px_24px_-6px_rgba(251,195,40,0.3)] transition-all duration-300 active:scale-[0.98]"
-          >
-            <span>Get Free Quote</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4 text-slate-950">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
-
-          <a
-            href="tel:+16479161495"
-            className="w-full bg-gradient-to-b from-[#2e2e33] to-[#1c1c1f] hover:brightness-110 text-white font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-2 shadow-[0_12px_24px_-6px_rgba(0,0,0,0.15)] transition-all duration-300 active:scale-[0.98]"
-          >
-            <span>Call Now</span>
-          </a>
-        </div>
-
-        {/* Soft Animated Chevron */}
-        <div className="text-slate-800/80 animate-bounce mt-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
-        </div>
+      {/* 2. CAR IMAGE CONTAINER (Stacked perfectly below the brand text) */}
+     <div className="relative w-full h-[38vh] mb-6 rounded-[28px] p-[1.5px] bg-gradient-to-b from-red-500/40 via-red-600/20 to-red-900/60 shadow-[0_12px_40px_rgba(0,0,0,0.6),0_0_20px_rgba(239,68,68,0.15)] overflow-hidden">
   
-
-
-
-
-
-
-
-
-
-
-        {/* ======================================================= */}
-        {/* SERVICES SECTION (image_3ec64d.png style)                */}
-        {/* ======================================================= */}
-       <section id="services" className="w-full mb-16 text-center max-w-md mx-auto px-4">
-  <h2 className="text-3xl font-black tracking-tight text-slate-900 mb-6">Our Main Services</h2>
-  
-  <div className="flex flex-col gap-5 w-full">
-    {[
-      {
-        id: 'car-wash',
-        title: 'Car Wash',
-        description: 'Thorough exterior wash for a spotless appearance.',
-        imgSrc: '/Images/Carwashing.jpg',
-      },
-      {
-        id: 'car-detailing',
-        title: 'Car Detailing',
-        description: 'Deep Cleaning of interior & exterior for a like-new feel.',
-        imgSrc: '/Images/Ceramic.jpg',
-      },
-      {
-        id: 'paint-correction',
-        title: 'Paint Correction',
-        description: 'Remove swirls, scratches & restore clarity.',
-        imgSrc: '/Images/Paint-fix.jpg',
-      },
-      {
-        id: 'body-repair',
-        title: 'Body Repair',
-        description: 'Bumper scuffs, dents & paint touch ups.',
-        imgSrc: '/Images/Tint.jpg',
-      },
-    ].map((service) => (
-      <ServiceCard key={service.id} service={service} />
-    ))}
+  {/* Inner Mask Wrapper matching the exact crisp spacing from image_240a05.png */}
+  <div className="relative w-full h-full bg-zinc-950 rounded-[26px] overflow-hidden">
+    <img 
+      src="/hero-car.png" 
+      alt="Premium Detailing" 
+      className="w-full h-full object-cover object-center"
+    />
+    
+    {/* Dark Glass Shadow Overlay inside the card wrapper */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+    
+    {/* Exact Pill Badge matching the bottom-left positioning from image_240a05.png */}
+    <div className="absolute bottom-4 left-4 bg-zinc-900/70 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl shadow-lg shadow-black/40">
+      <span className="text-white text-xs font-bold tracking-tight antialiased">
+        Infrared Curing
+      </span>
+    </div>
   </div>
-</section>
+
+</div>
+
+      {/* 3. PREMIUM ACTION BUTTONS (Stacked perfectly below the car image) */}
+      <div className="w-full flex flex-col gap-3.5 px-1 mb-8">
+    
+<Link
+  href="/quote"
+  className="w-full bg-gradient-to-b from-[#ffea53] via-[#fdd53c] to-[#fbc328] hover:brightness-110 text-slate-950 font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-1.5 shadow-[inset_0_4px_8px_rgba(255,255,255,0.85),_inset_0_-2px_6px_rgba(0,0,0,0.15),_0_12px_30px_rgba(251,195,40,0.4)] transition-all duration-300 active:scale-[0.98]"
+>
+  <span>Get Free Quote</span>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4 text-slate-950">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+  </svg>
+</Link>
 
 
+        <a
+  href="tel:+16479161495"
+  className="w-full bg-gradient-to-b from-[#2e2e33] to-[#1c1c1f] hover:brightness-110 text-white font-bold text-base py-4 px-6 rounded-full flex items-center justify-center gap-2 shadow-[inset_0_0_10px_3px_rgba(255,255,255,0.25),_0_12px_24px_-6px_rgba(0,0,0,0.4)] transition-all duration-300 active:scale-[0.98] border border-white/10"
+>
+  <span>Call Now</span>
+</a>
+</div>
 
+     {/* Soft Animated Chevron */}
+<div className="text-black/80 drop-shadow-md animate-bounce mb-14">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 mx-auto">
+    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+  </svg>
+</div>
+
+      {/* ======================================================= */}
+      {/* SERVICES SECTION                                       */}
+      {/* ======================================================= */}
+      <section id="services" className="w-full text-center max-w-md mx-auto">
+        <h2 className="text-3xl font-black tracking-tight text-slate-900 mb-6">Our Main Services</h2>
+        
+        <div className="flex flex-col gap-5 w-full">
+          {[
+            { id: 'car-wash', title: 'Car Wash', description: 'Thorough exterior wash for a spotless appearance.', imgSrc: '/Images/Carwashing.jpg' },
+            { id: 'car-detailing', title: 'Car Detailing', description: 'Deep Cleaning of interior & exterior for a like-new feel.', imgSrc: '/Images/Ceramic.jpg' },
+            { id: 'paint-correction', title: 'Paint Correction', description: 'Remove swirls, scratches & restore clarity.', imgSrc: '/Images/Paint-fix.jpg' },
+            { id: 'body-repair', title: 'Body Repair', description: 'Bumper scuffs, dents & paint touch ups.', imgSrc: '/Images/Tint.jpg' },
+          ].map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
+        </div>
+      </section>
+   
 
 
 
@@ -358,6 +359,34 @@ export default function Home() {
         </section>
 
 
+{/* ======================================================= */}
+{/* FULL SCREEN INFINITE SCROLLING TICKER (FIXED BREAKOUT)   */}
+{/* ======================================================= */}
+<div className="w-screen  bg-[#fdd53c] py-3 overflow-hidden whitespace-nowrap flex select-none border-y border-slate-950 my-8">
+  {/* Track 1 */}
+  <div className="flex items-center gap-8 shrink-0 animate-[marquee_20s_linear_infinite] min-w-full justify-around text-slate-950 font-sans text-sm tracking-wide uppercase font-extrabold">
+    <span>Open 7 Days</span>
+    <span className="text-xs opacity-60">•</span>
+    <span>Trusted by 25+ Customers</span>
+    <span className="text-xs opacity-60">•</span>
+    <span>100% Safety Guaranteed</span>
+    <span className="text-xs opacity-60">•</span>
+    <span>Premium Mobile Detailing</span>
+    <span className="text-xs opacity-60">•</span>
+  </div>
+
+  {/* Track 2 */}
+  <div className="flex items-center gap-8 shrink-0 animate-[marquee_20s_linear_infinite] min-w-full justify-around text-slate-950 font-sans text-sm tracking-wide uppercase font-extrabold" aria-hidden="true">
+    <span>Open 7 Days</span>
+    <span className="text-xs opacity-60">•</span>
+    <span>Trusted by 25+ Customers</span>
+    <span className="text-xs opacity-60">•</span>
+    <span>100% Safety Guaranteed</span>
+    <span className="text-xs opacity-60">•</span>
+    <span>Premium Mobile Detailing</span>
+    <span className="text-xs opacity-60">•</span>
+  </div>
+</div>
 
 
 
@@ -506,38 +535,56 @@ export default function Home() {
         {/* ======================================================= */}
         {/* FAQ ACCORDION BLOCK (Screenshot 2026-06-25 191153.png)  */}
         {/* ======================================================= */}
-        <section id="faq" className="w-full text-left scroll-mt-6 mb-8">
-          <h2 className="text-3xl font-black text-center tracking-tight text-slate-900 mb-6">
-            Frequently Asked Questions
-          </h2>
+        
+       
+
+<section 
+  id="faq" 
+  className="w-screen relative  bg-black text-white text-left scroll-mt-6 py-14 px-4 border-t border-[#252528]"
+  style={{ fontFamily: " SF Pro, Arial, sans-serif" }}
+>
+  <div className="max-w-md mx-auto w-full">
+    
+    {/* Heading matched perfectly to Helvetica styling */}
+    <h2 className="text-[32px] font-bold text-center tracking-tight text-white mb-8 leading-tight max-w-[280px] mx-auto">
+      Frequently Asked Questions
+    </h2>
+    
+    <div className="flex flex-col gap-3 w-full">
+      {[
+        "How do I book a service?",
+        "Can you detail my car at my home, office or appartment?",
+        "How long does the detail usually take?",
+        "How long will the detail last?",
+        "What if I don't have access to water or electricity?"
+      ].map((question, index) => (
+        <div 
+          key={index} 
+          className="w-full bg-[#1c1c1e] text-white rounded-lg overflow-hidden transition-all duration-200"
+        >
+          <button 
+            onClick={() => toggleFaq(index)}
+            className="w-full p-5 flex justify-between items-center font-bold text-sm transition-colors active:bg-[#252528] text-left gap-4"
+          >
+            <span className="text-[14px] leading-snug font-bold tracking-wide text-white/95">
+              {question}
+            </span>
+            <span className="text-lg text-white font-light shrink-0">
+              {openFaq === index ? "−" : "+"}
+            </span>
+          </button>
           
-          <div className="flex flex-col gap-2.5 w-full">
-            {[
-              "How do I book a service?",
-              "Can you detail my car at my home, office or apartment?",
-              "How long does the detail usually take?",
-              "How long will the detail last?",
-              "What if I don't have access to water or electricity?"
-            ].map((question, index) => (
-              <div key={index} className="w-full bg-[#1e1e20] text-white rounded-xl overflow-hidden shadow-sm">
-                <button 
-                  onClick={() => toggleFaq(index)}
-                  className="w-full p-4 flex justify-between items-center font-bold text-xs sm:text-sm transition-colors active:bg-zinc-800 text-left"
-                >
-                  <span>{question}</span>
-                  <span className="text-base text-zinc-400 font-light ml-2">
-                    {openFaq === index ? "−" : "+"}
-                  </span>
-                </button>
-                {openFaq === index && (
-                  <div className="px-4 pb-4 text-xs text-zinc-300 font-normal leading-relaxed border-t border-zinc-800 pt-2 bg-zinc-900/50">
-                    We bring all certified products and tools necessary to complete top-tier premium detailing services directly to your custom location.
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
+          {openFaq === index && (
+            <div className="px-5 pb-5 text-[13px] text-zinc-400 font-normal leading-relaxed border-t border-white/5 pt-3 bg-black/20">
+              We bring all certified products and tools necessary to complete top-tier premium detailing services directly to your custom location.
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       </main>
 
